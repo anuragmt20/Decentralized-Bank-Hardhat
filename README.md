@@ -1,5 +1,5 @@
 ```markdown
-# Decentralized Multi-Owner Bank
+# Decentralized Bank
 
 A decentralized multi-owner banking system built with Solidity and Hardhat. Users can create shared accounts, deposit Ether, request withdrawals, approve others' withdrawal requests, and withdraw funds only after enough approvals. It behaves like a simple on-chain multisig wallet.
 
