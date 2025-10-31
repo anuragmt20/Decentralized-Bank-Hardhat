@@ -1,24 +1,104 @@
-# BlockchainExpert - Bank Account With Multiple Approvals
 
-This project provides a smart contract that allows for creating joint bank accounts. Each bank account can have up to 4 owners, each of which must approve any withdrawl of funds. As well as completed contract there is are automated test cases and a slim front-end applications that allows you to interact with some functionality of the contract. Please free to extend this project and add your own features and functionality.
+# Decentralized Bank
 
-## Getting Started
+A decentralized multi-owner banking system built with Solidity and Hardhat. Users can create shared accounts, deposit Ether, request withdrawals, approve withdrawal requests, and withdraw only after enough approvals.
 
-To test and deploy the smart contract follow the steps below.
+## Features
 
-1. Install [Node.js](https://nodejs.org/en/download/)
-2. Clone the repository: `git clone https://github.com/algoexpert-io/Joint-Bank-Account.git`
-3. `cd Joint-Bank-Account`
-4. `npm install`
-5. To test the contract run `npx hardhat test`
-6. To deploy the contract to your `localhost` network do the following:
-   - `npx hardhat node`
-   - `npx hardhat run --network localhost ./script/deploy.js`
+- Create shared bank accounts, max 4 owners
+- Each wallet can hold up to 3 accounts
+- Deposit Ether into shared accounts
+- Request withdrawals, requires co-owner approval
+- Prevent self-approval
+- Track approvals per withdrawal
+- Withdraw only after approval threshold
+- Emits events for all actions
+- View accounts owned by a wallet
 
-## Using the Frontend
+## How It Works
 
-1. Install the [Liveserver Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in VSCode.
-2. Open [base.html](frontend/base.html)
-3. Click the button that says "Go Live" in the bottom right hand corner of your VSCode.
-4. Import any accounts you need into MetaMask and change your MetaMask network to "Hardhat".
-5. Interact with the contract!
+- Validates unique owners per account
+- Only owners can interact with an account
+- Checks balance before withdrawal
+- Uses `call` for secure transfers
+- Clears pending request after execution
+
+## Stack
+
+| Component | Tool |
+|---------|------|
+| Blockchain | Solidity |
+| Dev Env | Hardhat |
+| Frontend | HTML, CSS, JS |
+| Wallet | MetaMask |
+| Interaction | Ethers.js |
+
+## Project Structure
+
+```text
+/contracts
+  BankAccount.sol
+/scripts
+  deploy.js
+/test
+  bank.test.js
+/frontend
+  index.html
+  script.js
+hardhat.config.js
+README.md
+```
+
+
+## Setup
+
+Install:
+
+```bash
+npm install
+```
+
+Compile:
+
+```bash
+npx hardhat compile
+```
+
+Test:
+
+```bash
+npx hardhat test
+```
+
+Local blockchain:
+
+```bash
+npx hardhat node
+```
+
+Deploy:
+
+```bash
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+Paste deployed address into:
+
+```text
+frontend/script.js
+```
+
+## Frontend Usage
+
+- Connect MetaMask
+- Create shared account with co-owners
+- See accounts you own
+- Use functions:
+  - `deposit`
+  - `withdraw`
+
+## Notes
+
+- Educational only, not audited
+- Do not use with real funds
+- Demonstrates multisig logic, secure Ether handling, Hardhat workflow, Ethers.js integration
