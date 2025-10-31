@@ -47,7 +47,7 @@ A decentralized multi-owner banking system built with Solidity and Hardhat. User
   script.js
 hardhat.config.js
 README.md
-
+```
 
 
 ## Setup
